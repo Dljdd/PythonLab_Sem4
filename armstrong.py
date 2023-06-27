@@ -1,26 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Feb 14 12:37:46 2023
+Created on Mon Jun 26 23:44:54 2023
 
 @author: dylanmoraes
 """
 
-num = int(input("Enter a number: "))
+def is_armstrong_number(num):
+    order = len(str(num))
+    sum = 0
+    temp = num
+    while temp > 0:
+        digit = temp % 10
+        sum += digit ** order
+        temp //= 10
+    return num == sum
 
-# find the number of digits in the given number
-num_digits = len(str(num))
-
-# initialize sum to 0
-sum = 0
-
-# iterate over each digit in the given number
-for digit in str(num):
-    # add the cube of each digit to the sum
-    sum += int(digit) ** num_digits
-
-# check if the sum is equal to the given number
-if sum == num:
-    print(num, "is an Armstrong number")
-else:
-    print(num, "is not an Armstrong number")
+# Example usage:
+for num in range(1, 1001):
+    if is_armstrong_number(num):
+        print(num)
